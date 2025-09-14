@@ -1,0 +1,23 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Cambia a tu rama principal si no es main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    # Si necesitas compilar tu sitio, hazlo aquí
+    # - name: Build
+    #   run: npm install && npm run build
+
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v6
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./  # Cambia a la carpeta que contiene tu index.html
